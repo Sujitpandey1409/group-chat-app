@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Input from './components/input'
 import axios from 'axios';
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = 'https://he-llo-app.onrender.com';
 
 function App() {
   const [chats, setChats] = useState([])

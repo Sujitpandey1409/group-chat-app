@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from 'axios';
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = 'https://he-llo-app.onrender.com';
 
 import './input.css'
 const Input = (props) => {
