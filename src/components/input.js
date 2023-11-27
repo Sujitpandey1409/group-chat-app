@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import axios from 'axios';
 const BASE_URL = 'https://he-llo-app-by-sujit.onrender.com';
+// const BASE_URL = 'http://localhost:4001/';
 
 import './input.css'
 const Input = (props) => {
@@ -8,21 +9,25 @@ const Input = (props) => {
     const [placeholder, setPlaceholder] = useState('Type your name')
     const [message, setMessage] = useState([])
     const inputdata = useRef(null)
+    window.addEventListener('beforeunload', async() => {props.message(['lgn wth ur nme'], '', false);})
     let handleSubmit = async (e) => {
         e.preventDefault()
         if (buttonValue == 'login') {
             setbuttonValue('Send')
             setPlaceholder('Type your message')
-            localStorage.setItem('user', inputdata.current.value)
+            const input_val = inputdata.current.value
+            inputdata.current.value = ''
+            localStorage.setItem('user', input_val)
+            props.message([], 'Adding a new member...' , false)
             try {
                 const response = await axios.delete(BASE_URL)
-                console.log('Message added:', response.data);
+                console.log('Message deleted:', response.data);
             }
             catch (error) {
-                console.error('error adding message:', error);
+                console.error('error deleting message:', error);
             }
-            props.message(['lgn wth ur nme'])
-            inputdata.current.value = ''
+            props.message([], "you're Added, "+input_val+' 😎' , true)
+            // inputdata.current.value = ''
         }
         else {
             // props.message([...message,localStorage.getItem('user')+':'+inputdata.current.value])
@@ -35,8 +40,6 @@ const Input = (props) => {
             catch (error) {
                 console.error('error adding message:', error);
             }
-            
-            const response = await axios.get(BASE_URL)
             // props.message(response.data)
 
             inputdata.current.value = ''

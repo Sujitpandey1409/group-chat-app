@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-    <a href='https://github.com/Sujitpandey1409'><div className='footer'>follow me</div></a>
+    <a href='https://github.com/Sujitpandey1409'><div className='footer'>follow me :)😊</div></a>
   </React.StrictMode>
 );
 
